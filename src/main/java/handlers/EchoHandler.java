@@ -9,6 +9,7 @@ public final class EchoHandler implements Handler<RoutingContext> {
         final var content = routingContext.pathParam("content");
         routingContext.response()
                 .setStatusCode(200)
+                .putHeader("Contetnt-Type", "text/plain")
                 .putHeader("Content-Length", Integer.toString(content.length()))
                 .write(content);
     }
