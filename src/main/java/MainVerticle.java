@@ -1,5 +1,7 @@
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
+import routers.GetRouter;
+import routers.MainRouter;
 
 
 public final class MainVerticle extends AbstractVerticle {
@@ -12,7 +14,7 @@ public final class MainVerticle extends AbstractVerticle {
 
     @Override
     public void start(final Promise<Void> startFuture) {
-        final var router = RouterConfig.setupRouter(vertx);
+        final var router = new MainRouter().create(vertx);
 
         vertx.createHttpServer()
                 .requestHandler(router)
