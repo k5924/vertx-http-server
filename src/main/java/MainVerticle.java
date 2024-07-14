@@ -1,5 +1,6 @@
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
+import io.vertx.core.http.HttpServerOptions;
 import routers.GetRouter;
 import routers.MainRouter;
 
@@ -15,8 +16,13 @@ public final class MainVerticle extends AbstractVerticle {
     @Override
     public void start(final Promise<Void> startFuture) {
         final var router = new MainRouter().create(vertx);
+        final var serverOptions = new HttpServerOptions();
+        serverOptions
+                .setCompressionSupported(true)
+                .setReuseAddress(true)
+                .setReusePort(true);
 
-        vertx.createHttpServer()
+        vertx.createHttpServer(serverOptions)
                 .requestHandler(router)
                 .listen(port, httpServerAsyncResult -> {
                     if (httpServerAsyncResult.succeeded()) {
