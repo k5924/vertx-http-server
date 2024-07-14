@@ -49,4 +49,20 @@
         </plugins>
     </build>
 
+    <dependencies>
+        <!-- Vert.x Core -->
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-core</artifactId>
+            <version>4.4.4</version>
+        </dependency>
+        <!-- Vert.x Web for handling HTTP requests -->
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-web</artifactId>
+            <version>4.4.4</version>
+        </dependency>
+    </dependencies>
+
+
 </project>
